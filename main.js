@@ -74,7 +74,9 @@ $(function () {
         var checkedItems = {},
             counter = 0;
         $("#check-list-box li.active").each(function (idx, li) {
-            checkedItems[counter] = $(li).text();
+            if(counter>0){
+                checkedItems[counter] = $(li).text();
+            }
             counter++;
         });
         $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
@@ -83,6 +85,7 @@ $(function () {
     $('#toggle_all').on('click', toggle_all);
 
     function toggle_all() {
+        let toggle_all = $('#toggle_all')
         checkboxes = $('.list-group-item');
         let deselect = true;
         for (var i = 1; i < checkboxes.length; i++) {
@@ -90,11 +93,17 @@ $(function () {
                 deselect = false;
                 $(checkboxes[i]).trigger('click');
             }
+            if(!deselect){
+                toggle_all.find('.state-icon').removeClass().addClass('state-icon glyphicon glyphicon-check');
+                toggle_all.addClass('list-group-item-primary active');
+            }
         }
         if (deselect) {
             for (var i = 1; i < checkboxes.length; i++) {
                 $(checkboxes[i]).trigger('click');
             }
+            toggle_all.find('.state-icon').removeClass().addClass('state-icon glyphicon glyphicon-unchecked');
+            toggle_all.removeClass('list-group-item-primary active');  
         }
     }
 });
