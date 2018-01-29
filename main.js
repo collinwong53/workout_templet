@@ -1,7 +1,7 @@
 //muscle group checkbox
 $(function () {
     $('.list-group.checked-list-box .list-group-item').each(function () {
-        
+
         // Settings
         var $widget = $(this),
             $checkbox = $('<input type="checkbox" class="hidden" />'),
@@ -15,12 +15,12 @@ $(function () {
                     icon: 'glyphicon glyphicon-unchecked'
                 }
             };
-            
+
         $widget.css('cursor', 'pointer')
         $widget.append($checkbox);
 
         // Event Handlers
-        $widget.on('click', function(){
+        $widget.on('click', function () {
             $checkbox.prop('checked', !$checkbox.is(':checked'));
             $checkbox.triggerHandler('change');
             updateDisplay();
@@ -29,7 +29,7 @@ $(function () {
         $checkbox.on('change', function () {
             updateDisplay();
         });
-          
+
 
         // Actions
         function updateDisplay() {
@@ -53,11 +53,11 @@ $(function () {
 
         // Initialization
         function init() {
-            
+
             if ($widget.data('checked') === true) {
                 $checkbox.prop('checked', !$checkbox.is(':checked'));
             }
-            
+
             updateDisplay();
 
             // Inject the icon if applicable
@@ -67,23 +67,26 @@ $(function () {
         }
         init();
     });
-    
-    $('#get-checked-data').on('click', function(event) {
-        event.preventDefault(); 
-        var checkedItems = {}, counter = 0;
-        $("#check-list-box li.active").each(function(idx, li) {
+
+    $('#get-checked-data').on('click', function (event) {
+        event.preventDefault();
+        var checkedItems = {},
+            counter = 0;
+        $("#check-list-box li.active").each(function (idx, li) {
             checkedItems[counter] = $(li).text();
             counter++;
         });
         $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
     });
 
-    $('#toggle_all').on('click',toggle_all);
+    $('#toggle_all').on('click', toggle_all);
+
     function toggle_all() {
         checkboxes = $('.list-group-item');
-        console.log(checkboxes);
-        for(var i=0;i<checkboxes.length;i++) {
-          checkboxes[i].toggle_checkbox();
+        for (var i = 1; i < checkboxes.length; i++) {
+            if (!$(checkboxes[i]).hasClass('active')) {
+                $(checkboxes[i]).trigger('click');
+            }
         }
-      }
+    }
 });
