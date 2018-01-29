@@ -21,9 +21,10 @@ $(function () {
 
         // Event Handlers
         $widget.on('click', function () {
-            $checkbox.prop('checked', !$checkbox.is(':checked'));
-            $checkbox.triggerHandler('change');
-            updateDisplay();
+            if(!$(this).is('#toggle_all')){
+                $checkbox.prop('checked', !$checkbox.is(':checked'));
+                $checkbox.triggerHandler('change');
+            }
         });
 
         $checkbox.on('change', function () {
@@ -83,8 +84,15 @@ $(function () {
 
     function toggle_all() {
         checkboxes = $('.list-group-item');
+        let deselect = true;
         for (var i = 1; i < checkboxes.length; i++) {
             if (!$(checkboxes[i]).hasClass('active')) {
+                deselect = false;
+                $(checkboxes[i]).trigger('click');
+            }
+        }
+        if (deselect) {
+            for (var i = 1; i < checkboxes.length; i++) {
                 $(checkboxes[i]).trigger('click');
             }
         }
