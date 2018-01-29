@@ -9,7 +9,7 @@ function Workout_api() {
         }
         $.ajax({
             dataType: 'json',
-            url:"http://localhost:9000/exercises/",
+            url:"localhost:8888/side_projects/workout_templet/exercise-master/exercises/",
             method: 'get',
             success: function (data) {
                 promise.resolve(data);
