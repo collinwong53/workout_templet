@@ -9,6 +9,8 @@
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="muscle_group_check_box.js"></script>
+    <script src="api.js"></script>
     <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -25,14 +27,22 @@
         <div class="well" style="max-height: 300px;overflow: auto;">
             <ul id="check-list-box" class="list-group checked-list-box">
                 <li id="toggle_all" class="list-group-item">Select All</li>
-                <li class="list-group-item">Chest</li>
-                <li class="list-group-item">Back</li>
-                <li class="list-group-item">Shoulders</li>
+                <li class="list-group-item">Abdominals</li>
+                <li class="list-group-item">Abductors</li>
+                <li class="list-group-item">Adductors</li>
                 <li class="list-group-item">Biceps</li>
-                <li class="list-group-item">Triceps</li>
                 <li class="list-group-item">Calves</li>
-                <li class="list-group-item">Abs</li>
-                <li class="list-group-item">Legs</li>
+                <li class="list-group-item">Chest</li>
+                <li class="list-group-item">Forearm</li>
+                <li class="list-group-item">Glutes</li>
+                <li class="list-group-item">Hamstrings</li>
+                <li class="list-group-item">Lats</li>
+                <li class="list-group-item">Lower Back</li>
+                <li class="list-group-item">Middle Back</li>
+                <li class="list-group-item">Quadriceps</li>
+                <li class="list-group-item">Shoulders</li>
+                <li class="list-group-item">Traps</li>
+                <li class="list-group-item">Triceps</li>
             </ul>
         </div>
         <button class="btn btn-primary col-xs-12" id="get-checked-data">Get Checked Data</button>
